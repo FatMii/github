@@ -15,4 +15,15 @@ Git 是一个开源的分布式版本控制系统，用于敏捷高效地处理�
 
 版本区(白色)
 
-test not add
+## command
+
+```sql
+
+比较工作区和暂存区的差异
+git diff
+
+比较暂存区和版本区的差异
+
+git diff --cached
+
+```

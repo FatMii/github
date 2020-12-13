@@ -30,6 +30,8 @@ git diff --cached
 git diff master
 ```
 
+### 常用命令
+
 ```
 git reset HEAD <file> : 暂存区与版本区保持一致
 
@@ -43,4 +45,25 @@ git reset --hard <version> : 恢复版本区指定版本的内容到工作区
 
 git reflog : 查看引用版本号
 
+```
+
+
+### 分支命令
+```
+git branch : 查看分支
+
+git branch dev : 创建dev分支
+
+git checkout dev : 切换到dev分支
+
+git checkout -b dev : 创建并切换到dev分支
+
+git branch -d dev : 删除dev分支
+```
+
+### 合并分支
+
+```
+git merge test : 把test分支合并到当前分支
+git log --oneline --graph ： 展示历史操作图
 ```

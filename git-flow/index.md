@@ -19,8 +19,20 @@
 
 2.当要添加功能时，所有功能都是从这个分支切出去的，而功能分支实现后，也都会合并回来这个分支中
 
-三、hotfix
 
-四、release
+三、hotfix (从master出来，结束后合并到master和develop)
+当线上产品发生了紧急问题的时候，就会从master分支中开一个hotfix分支出来进行修复。
+
+当hotfix分支修复完成之后，就会合并到master分支中，并且也会合并到develop分支中。
+
+
+四、release (从develop出来，结束后合并到master和develop)
+当develop分支完成需求后，就可以从develop分支中开一个release分支，进行上线前最后的测试。
+
+测试完成后，释放release分支将会同时合并到master以及develop分支中。
 
 五、feature
+
+当我们需要补充功能的时候，就会从develop分支中开一个feature分支进行功能开发。
+
+当功能实现后，在将feature分支合并到develop分支中，等待最后的测试发布。

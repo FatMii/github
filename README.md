@@ -114,5 +114,26 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 --mixed模式 会在重置 HEAD 和 branch 的指针位置 的同时，会保留工作目录，并将已 commit 到仓库的内容和暂存区放到工作区，并且清空暂存区。
 ```
 
+### git merge 与 git rebase 的区别？
+
+
+
+## git merge
+优点：能记录真实的commit情况，包括每个分⽀的详情
+缺点：由于每次merge会⾃动产⽣⼀个commit，因此在使用⼀些可视化的git工具时会看到这些自动产生的commit，这些commit对于程序员来说没有什么特别的意义，多了反而会影响阅读。
+
+## git rebase
+git rebase会合并之前的commit历史。
+
+优点：可以得到更简洁的提交历史，去掉了merge 产生的commit
+缺点：因为合并而产生的代码问题，就不容易定位，因为会重写提交历史信息
+
+- 相同：git merge和git rebase两个命令都⽤于从⼀个分⽀获取内容并合并到当前分⽀。
+
+- 不同点：git merge会⾃动创建⼀个新的commit，如果合并时遇到冲突的话，只需要修改后重新commit。
+- 场景：
+当需要保留详细的合并信息，建议使⽤git merge, 尤其是要合并到master上
+当发现⾃⼰修改某个功能时提交比较频繁，并觉得过多的合并记录信息对自己来说没有必要，那么可尝试使用git rebase
+
 
 

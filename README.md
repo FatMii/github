@@ -114,9 +114,12 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 --mixed模式 会在重置 HEAD 和 branch 的指针位置 的同时，会保留工作目录，并将已 commit 到仓库的内容和暂存区放到工作区，并且清空暂存区。
 ```
 
-### git merge 与 git rebase 的区别？
+# git pull 和 git fetch 的区别
+- git fetch 只是将远程仓库的变化下载下来，并没有和本地分支合并。
+  
+- git pull 会将远程仓库的变化下载下来，并和当前分支合并。
 
-
+# git merge 与 git rebase 的区别？
 
 ## git merge
 优点：能记录真实的commit情况，包括每个分⽀的详情

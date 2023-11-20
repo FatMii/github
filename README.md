@@ -121,6 +121,44 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 
 # git merge 与 git rebase 的区别？
 
+## 例子
+
+1. 我们从master分支里拉出一条新分支为dev分支
+   
+![Alt text](assert/merge-rebase/1.png)
+
+2. 在dev分支上开发，并且完成了三次commit,目前指针指向C5
+
+![Alt text](assert/merge-rebase/2.png)
+
+
+3. 在准备第四次提交的时候，另外一个同事在master主分支上进行了一次提交，master的提交已经向前走了
+
+![Alt text](assert/merge-rebase/3.png)
+
+此时我们知道B同事开发的dev分支是基于C2提交点切出来的，而这个时候master分支已经被更新了
+
+如果B同学开发完毕，需要将其所作的功能合并到master分支 ，他可以有两种选择：
+
+## 直接git merge，那么这个时候会这么做
+（1）找到master和dev的共同祖先，即C2
+
+（2）将dev的最新提交C5和master的最新提交即C6合并成一个新的提交C7，有冲突的话，解决冲突
+
+（3）将C2之后的dev和master所有提交点，按照提交时间合并到master
+
+![Alt text](assert/merge-rebase/4.png)
+
+## 直接git rebase
+切换分支到需要rebase的分支，这里是dev分支
+
+执行git rebase master，有冲突就解决冲突，解决后直接git add . 再git rebase --continue即可
+
+发现采用rebase的方式进行分支合并，整个master分支并没有多出一个新的commit，原来dev分支上的那几次（C3，C4，C5）commit记录在rebase之后其hash值发生了变化，不在是当初在dev分支上提交的时候的hash值了，但是提交的内容被全部复制保留了，并且整个master分支的commit记录呈线性记录
+
+![Alt text](assert/merge-rebase/5.png)
+
+
 ## git merge
 优点：能记录真实的commit情况，包括每个分⽀的详情
 缺点：由于每次merge会⾃动产⽣⼀个commit，因此在使用⼀些可视化的git工具时会看到这些自动产生的commit，这些commit对于程序员来说没有什么特别的意义，多了反而会影响阅读。

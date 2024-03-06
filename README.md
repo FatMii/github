@@ -105,19 +105,24 @@ git stash drop
 
 git reset --hard [commit_id] : 重置 暂存区 和 工作区
 
-git reset --soft [commit_id] :
+git reset --soft [commit_id] : 暂存区和工作区都不会被重置
 
 --soft 模式 会在重置 HEAD 和 branch 的指针位置 的同时，保留工作区和暂存区中的内容，并把重置 HEAD 指针位置 所带来的新的差异放进暂存区（将已 commit 到仓库的内容放到暂存区）
 
-git reset 不带参数则默认使用--mixed模式。
+git reset 不带参数则默认使用--mixed模式。 重置暂存区
+
 git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的内容和暂存区放到工作区
 --mixed模式 会在重置 HEAD 和 branch 的指针位置 的同时，会保留工作目录，并将已 commit 到仓库的内容和暂存区放到工作区，并且清空暂存区。
 ```
 
 # git pull 和 git fetch 的区别
 - git fetch 只是将远程仓库的变化下载下来，并没有和本地分支合并。
+
+也就是 fetch 的时候本地的 master 没有变化，但是与远程仓关联的那个版本号被更新了，接下来就是在本地 merge 合并这两个版本号的代码
   
 - git pull 会将远程仓库的变化下载下来，并和当前分支合并。
+
+
 
 # git merge 与 git rebase 的区别？
 
@@ -141,6 +146,7 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 如果B同学开发完毕，需要将其所作的功能合并到master分支 ，他可以有两种选择：
 
 ## 直接git merge，那么这个时候会这么做
+
 （1）找到master和dev的共同祖先，即C2
 
 （2）将dev的最新提交C5和master的最新提交即C6合并成一个新的提交C7，有冲突的话，解决冲突
@@ -150,6 +156,7 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 ![Alt text](assert/merge-rebase/4.png)
 
 ## 直接git rebase
+
 切换分支到需要rebase的分支，这里是dev分支
 
 执行git rebase master，有冲突就解决冲突，解决后直接git add . 再git rebase --continue即可
@@ -160,10 +167,12 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 
 
 ## git merge
+
 优点：能记录真实的commit情况，包括每个分⽀的详情
 缺点：由于每次merge会⾃动产⽣⼀个commit，因此在使用⼀些可视化的git工具时会看到这些自动产生的commit，这些commit对于程序员来说没有什么特别的意义，多了反而会影响阅读。
 
 ## git rebase
+
 git rebase会合并之前的commit历史。
 
 优点：可以得到更简洁的提交历史，去掉了merge 产生的commit
@@ -178,3 +187,26 @@ git rebase会合并之前的commit历史。
 
 
 
+
+# git冲突场景，如何解决？
+
+## 1. 多个分值代码合并到一个分支时
+
+## 2. 多个分支向同一个远端分支推送
+
+## 快速合并
+
+ 如果当前分支的每一个commit都已经存在另一个分支里面，git就会执行一个fast-forward合并操作，这种情况下，git会直接把当前分支指向另一个分支的commit，而不会创建新的commit。
+
+## 冲突
+
+<<<<<<<< 和 =====之前的区域就是当前更改的内容
+========= 和 >>>>>>>>>就是传入进来更改的内容
+
+# fork clone 和 branch 的区别？
+
+fork 就是复制了一个仓库的所有内容，如分支，tag，提交，如果想将你的修改合并到原项目中，可以通过Pull Request
+
+clone 从远程代码仓下载到本地，形成本地代码仓库，可以对本地代码进行修改，提交，推送等操作
+
+branch 开启新的分支

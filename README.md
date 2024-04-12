@@ -45,7 +45,7 @@ git reset --hard <version> : 恢复版本区指定版本的内容到工作区
 
 git reflog : 查看引用版本号
 
-git cherry-pick :将已经提交的 commit，复制出新的 commit 应用到分支里
+git cherry-pick : 将已经提交的 commit，复制出新的 commit 应用到分支里
 
 git revert :将现有的提交还原，恢复提交的内容，并生成一条新的还原记录。
 
@@ -124,6 +124,15 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 
 
 
+
+# cherry-pick
+
+git merge是合并所有commit到其他分支，cherry-pick是合并几个commit
+
+```git cherry-pick <commitHash>```
+
+上面命令就会将指定的提交commitHash，应用于当前分支。这会在当前分支产生一个新的提交，当然它们的哈希值会不一样。
+
 # git merge 与 git rebase 的区别？
 
 ## 例子
@@ -188,6 +197,9 @@ git rebase会合并之前的commit历史。
 
 
 
+
+
+
 # git冲突场景，如何解决？
 
 ## 1. 多个分值代码合并到一个分支时
@@ -202,6 +214,8 @@ git rebase会合并之前的commit历史。
 
 <<<<<<<< 和 =====之前的区域就是当前更改的内容
 ========= 和 >>>>>>>>>就是传入进来更改的内容
+
+
 
 # fork clone 和 branch 的区别？
 

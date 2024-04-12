@@ -1,6 +1,6 @@
 什么是git flow?
 
-![](img/1.png)
+![](./img/1.png)
 
 
 

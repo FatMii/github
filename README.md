@@ -177,7 +177,7 @@ git merge是合并所有commit到其他分支，cherry-pick是合并几个commit
 
 ## git merge
 
-优点：能记录真实的commit情况，包括每个分⽀的详情
+优点：能记录真实的commit情况，包括每个分⽀的详情, 只需要处理一次冲突。
 缺点：由于每次merge会⾃动产⽣⼀个commit，因此在使用⼀些可视化的git工具时会看到这些自动产生的commit，这些commit对于程序员来说没有什么特别的意义，多了反而会影响阅读。
 
 ## git rebase
@@ -185,7 +185,7 @@ git merge是合并所有commit到其他分支，cherry-pick是合并几个commit
 git rebase会合并之前的commit历史。
 
 优点：可以得到更简洁的提交历史，去掉了merge 产生的commit
-缺点：因为合并而产生的代码问题，就不容易定位，因为会重写提交历史信息
+缺点：因为合并而产生的代码问题，就不容易定位，因为会重写提交历史信息。可能需要处理多次冲突。
 
 - 相同：git merge和git rebase两个命令都⽤于从⼀个分⽀获取内容并合并到当前分⽀。
 

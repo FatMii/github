@@ -103,13 +103,13 @@ git stash drop
 ```
 三种模式：hard soft mixed
 
-git reset --hard [commit_id] : 重置 暂存区 和 工作区
+git reset --hard [commit_id] : 重置 工作区  和 暂存区  到指定的commit
 
-git reset --soft [commit_id] : 暂存区和工作区都不会被重置
+git reset --soft [commit_id] : 工作区和暂存区都不会被重置 ，但它们不再被视为即将提交的更改。
 
 --soft 模式 会在重置 HEAD 和 branch 的指针位置 的同时，保留工作区和暂存区中的内容，并把重置 HEAD 指针位置 所带来的新的差异放进暂存区（将已 commit 到仓库的内容放到暂存区）
 
-git reset 不带参数则默认使用--mixed模式。 重置暂存区
+git reset 不带参数则默认使用--mixed模式。 工作区不变，重置暂存区
 
 git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的内容和暂存区放到工作区
 --mixed模式 会在重置 HEAD 和 branch 的指针位置 的同时，会保留工作目录，并将已 commit 到仓库的内容和暂存区放到工作区，并且清空暂存区。
@@ -129,9 +129,15 @@ git reset [commit_id] : 只保留工作区内容，并将已 commit 到仓库的
 
 git merge是合并所有commit到其他分支，cherry-pick是合并几个commit
 
+场景：1. 修复bug：在某个分支上修复了一个 bug，想快速将这个修复应用到其他分支，而不合并其他无关的更改。
+
+　　  2. 提取特定功能：在一个分支上开发的功能需要移植到另一个分支，但不想合并整个分支的改动。
+
 ```git cherry-pick <commitHash>```
 
 上面命令就会将指定的提交commitHash，应用于当前分支。这会在当前分支产生一个新的提交，当然它们的哈希值会不一样。
+
+
 
 # git merge 与 git rebase 的区别？
 
